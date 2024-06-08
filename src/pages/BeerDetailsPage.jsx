@@ -4,7 +4,7 @@ import { getBeer } from "../services/BeerService";
 
 function BeerDetailsPage() {
   const { id } = useParams();
-  const [beer, setBeer] = useState(null);
+  const [beer, setBeer] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ function BeerDetailsPage() {
           <p><strong>Attenuation Level:</strong> {beer.attenuation_level}</p>
           <p>{beer.description}</p>
           <p><strong>Contributed by:</strong> {beer.contributed_by}</p>
+          {Object.entries(beer).length === 0 && <p>No data found!! 🥺</p>}
         </div>
       )}
     </div>
